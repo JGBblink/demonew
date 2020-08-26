@@ -31,7 +31,7 @@ public class RibbonConfig {
 	 * 2.当前方式
 	 * @return
 	 */
-	@Bean
+	//@Bean
 	public IRule ribbonRule() {
 		return new MyRule();
 	}

@@ -1,6 +1,6 @@
 package com.example.eureka_client.rest.fegin;
 
-import com.example.eureka_server.rest.fegin.FeginDemoClient;
+import com.example.eureka_server.sdk.FeginDemoClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

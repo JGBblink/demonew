@@ -25,8 +25,9 @@ public class RibbonDemo {
 						@Override
 						public Observable<String> call(Server server) {
 							String addr = "http://" + server.getHost() + ":" + server.getPort();
-							System.out.println("调用地址" + addr);
-							return Observable.just("");
+							//System.out.println("调用地址" + addr);
+							// 使用调用工具进行调用
+							return Observable.just("result");
 						}
 					}).toBlocking().first();
 

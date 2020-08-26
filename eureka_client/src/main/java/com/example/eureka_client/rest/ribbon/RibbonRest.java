@@ -19,8 +19,8 @@ public class RibbonRest {
 	 */
 	@GetMapping("/template")
 	public String testRibbonForTemplate() {
-		String result = restTemplate.getForEntity("http://eureka-server/demo/ribbon/template", String.class).getBody();
-		//String result = restTemplate.getForEntity("http://localhost:9020/demo/ribbon/template", String.class).getBody();
+		//String result = restTemplate.getForEntity("http://eureka-server/demo/ribbon/template", String.class).getBody();
+		String result = restTemplate.getForEntity("http://127.0.0.1:9020/demo/ribbon/template", String.class).getBody();
 		return result;
 	}
 
