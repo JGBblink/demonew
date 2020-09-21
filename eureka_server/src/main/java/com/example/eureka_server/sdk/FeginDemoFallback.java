@@ -12,6 +12,7 @@ public class FeginDemoFallback implements FallbackFactory<FeginDemoClient> {
 			@Override
 			public String feginRemoteInvoke(long time) {
 				//throw new RuntimeException("微服务调用出错");
+				throwable.printStackTrace();
 				return "微服务调用出错";
 			}
 		};

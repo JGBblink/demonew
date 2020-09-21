@@ -1,6 +1,5 @@
 package com.example.eureka;
 
-import com.example.eureka.extend.MySpringApplication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -15,8 +14,10 @@ public class EurekaApplication {
 	Environment environment;
 
 	public static void main(String[] args) {
-		SpringApplication application = new MySpringApplication(EurekaApplication.class);
-		application.run(args);
+		/*SpringApplication application = new MySpringApplication(EurekaApplication.class);
+		application.run(args);*/
+
+		SpringApplication.run(EurekaApplication.class, args);
 
 	}
 

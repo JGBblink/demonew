@@ -13,7 +13,7 @@ import org.springframework.context.event.ContextClosedEvent;
  * 自定义listener
  * @author JGB
  */
-@Configuration
+//@Configuration
 public class MyListener implements ApplicationListener {
 	@Override
 	public void onApplicationEvent(ApplicationEvent event) {

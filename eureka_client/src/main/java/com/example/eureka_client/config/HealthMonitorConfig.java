@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 @Data
 public class HealthMonitorConfig extends AbstractHealthIndicator {
 
-	private boolean status;
+	private boolean status = true;
 
 	@Override
 	protected void doHealthCheck(Health.Builder builder) throws Exception {
