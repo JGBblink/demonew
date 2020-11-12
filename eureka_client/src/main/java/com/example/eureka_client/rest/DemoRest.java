@@ -4,8 +4,10 @@ import com.example.eureka_client.config.HealthMonitorConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -50,4 +52,37 @@ public class DemoRest {
 
 		return collect;
 	}
+
+	/**
+	 * 获取eureka-client服务列表信息
+	 * @return
+	 */
+	@GetMapping("/httpclient/demo2")
+	public ResponseEntity test2(@RequestParam String id,@RequestParam Long stopTime) {
+		System.out.println(id + " : " + Thread.currentThread() + "进入");
+		try {
+			Thread.sleep(stopTime);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+
+		return ResponseEntity.ok("ok");
+	}
+
+
+	/**
+	 * 获取eureka-client服务列表信息
+	 * @return
+	 */
+	@GetMapping("/httpclient/demo")
+	public ResponseEntity test(@RequestParam String id,@RequestParam Long stopTime) {
+		try {
+			System.out.println(id + " : " + Thread.currentThread() + "进入");
+			Thread.sleep(stopTime);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		return ResponseEntity.ok("ok");
+	}
+
 }

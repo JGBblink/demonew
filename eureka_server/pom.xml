@@ -67,6 +67,12 @@
             <scope>true</scope>
         </dependency>
 
+        <!--三方库-->
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+        </dependency>
+
         <!--test-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

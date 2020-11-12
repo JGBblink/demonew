@@ -37,7 +37,6 @@ public class MyLock {
 				e.printStackTrace();
 			}
 		}
-
 		String key = String.format(lockTemplet, id);
 		Long increment = redisTemplate.opsForValue().increment(key);
 		redisTemplate.expire(key,5,TimeUnit.SECONDS);
