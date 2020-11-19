@@ -84,5 +84,4 @@ public class DemoRest {
 		}
 		return ResponseEntity.ok("ok");
 	}
-
 }

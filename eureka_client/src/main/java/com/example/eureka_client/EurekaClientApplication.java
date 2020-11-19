@@ -1,5 +1,6 @@
 package com.example.eureka_client;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
@@ -14,6 +15,7 @@ import org.springframework.context.annotation.ComponentScan;
 @ComponentScan(basePackages = {
 		"com.example.eureka_client",
 		"com.example.eureka_server.sdk"})
+@MapperScan(basePackages = "com.example.eureka_client.dao.mapper")
 public class EurekaClientApplication {
 
 	public static void main(String[] args) {
