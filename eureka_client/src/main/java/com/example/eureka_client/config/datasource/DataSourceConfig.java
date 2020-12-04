@@ -3,14 +3,13 @@ package com.example.eureka_client.config.datasource;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
 import javax.sql.DataSource;
 
 /*
  * 配置多个数据源
  */
-@Configuration
+//@Configuration
 public class DataSourceConfig {
 
 	// 创建可读数据源

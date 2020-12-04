@@ -2,16 +2,14 @@ package com.example.eureka_client.config.datasource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Primary;
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
-import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
 import java.util.HashMap;
 import java.util.Map;
 
-@Component
-@Primary
+//@Component
+//@Primary
 public class DynamicDataSource extends AbstractRoutingDataSource {
 	@Autowired
 	@Qualifier("selectDataSource")   //获取读的数据源

@@ -1,10 +1,7 @@
 package com.example.eureka_client.config.datasource;
 
-import org.springframework.context.annotation.Lazy;
-import org.springframework.stereotype.Component;
-
-@Component
-@Lazy(false)
+//@Component
+//@Lazy(false)
 public class DataSourceContextHolder {
 
 	// 采用ThreadLocal 保存本地多数据源
