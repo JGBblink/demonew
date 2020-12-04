@@ -1,0 +1,44 @@
+import com.lesfurets.jenkins.unit.global.lib.Library
+
+@Library('jenkins-pipeline-library@master') _
+
+/**
+ * rplus-service-app-doctor 项目构建流水线
+ */
+def agentToUse = 'master'
+def report_dir = 'build/reports'
+def datetime = date.datetime()
+def datetime_number = datetime + "_$BUILD_ID"
+def git_tag = datetime_number
+def git_repo_credentialsId = 'gerrit_user_jenkins'
+def project_base_git_url = 'git.suifangyun.com/RPlus.Service.App.Doctor'
+def project_name = 'rplus-service-app-doctor'
+def build_log_path = "${report_dir}/jenkins-build-log.txt"
+def docker_container_port = '20310:20310'
+def project_namespace = 'rplushealth'
+def docker_registry_credentialsId = 'docker@postop'
+def docker_registry = 'registry.cn-qingdao.aliyuncs.com'
+def docker_host_ip_dev = '192.168.100.76'
+def image_registry_key = 'rplus_service_app_doctor_image'
+def image_registry_value = "${docker_registry}/${project_namespace}/${project_name}:$datetime_number"
+def commit_message = 'No new changes'
+
+templatePipeline(
+        agentToUse: agentToUse,
+        report_dir: report_dir,
+        datetime: datetime,
+        datetime_number: datetime_number,
+        git_tag: git_tag,
+        git_repo_credentialsId: git_repo_credentialsId,
+        project_base_git_url: project_base_git_url,
+        project_name: project_name,
+        build_log_path: build_log_path,
+        docker_container_port: docker_container_port,
+        project_namespace: project_namespace,
+        docker_registry_credentialsId: docker_registry_credentialsId,
+        docker_registry: docker_registry,
+        docker_host_ip_dev: docker_host_ip_dev,
+        image_registry_key: image_registry_key,
+        image_registry_value: image_registry_value,
+        commit_message: commit_message
+)

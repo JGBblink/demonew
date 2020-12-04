@@ -1,0 +1,72 @@
+pipeline {
+    agent any
+    // 定义构建参数
+    parameters {
+        string(name: 'USER_NAME', defaultValue: 'JGB', description: 'build user')
+        string(name: 'ENV_FILE', defaultValue: 'base-env.groovy', description: '环境变量存放文件')
+        booleanParam(name: 'TOGGLE', defaultValue: true, description: 'Toggle this value')
+    }
+
+    // 定义环境变量
+    environment {
+        CITY = "CD"     // 直接赋值
+        CC = """${sh(   // 动态赋值
+                returnStdout: true,
+                script: 'echo "clang"'
+            )}"""
+        EXIT_STATUS = """${sh(
+                returnStatus: true,
+                script: 'exit 1'
+            )}"""
+    }
+
+    stages {
+        // 拉取git代码
+        stage("git check") {
+            steps {
+                 git branch: 'dev', credentialsId: 'e666c8ca-32b4-4028-83c3-70f9faad2806', url: 'http://git.suifangyun.com/RPlus.Service.App.Doctor'
+            }
+        }
+        // 读取workspace下base-env.groovy环境配置文件
+        stage("init env") {
+            steps {
+                script {
+                    println "base-env.groovy"
+                    load "${params.ENV_FILE}"
+                }
+            }
+        }
+        // 检测变量是否准备完毕
+        stage('build check') {
+            input {
+                message "Should we continue?"
+                //ok "Yes, we should."          // 继续按钮文本
+                //submitter "admin,anthony"     // 哪些用户才有权限继续
+                parameters {                    // 传递的参数
+                    booleanParam(name: 'IS_BUILD', defaultValue: true, description: '是否构建子job')
+                }
+            }
+            steps {
+                echo '参数化准备完毕'
+                echo "USER_NAME : ${params.USER_NAME}"
+                echo "TOGGLE : ${params.TOGGLE}"
+                echo "${env.CC}"
+                //input "是否部署上线"      // 接收人工输入确认是否继续部署
+            }
+        }
+        // 开始构建
+        stage('build') {
+            steps {
+                echo '开始构建,传递参数触发子job'
+                echo "input ${params.IS_BUILD}"
+                // 触发下游节点
+                build job: 'JGB.first.demo.pipeline', parameters: [
+                    [$class: 'StringParameterValue', name: 'USER_NAME', value: "${params.USER_NAME}"],
+                    [$class: 'StringParameterValue', name: 'CITY', value: "${CITY}"],
+                    [$class: 'BooleanParameterValue', name: 'TOGGLE', value:  "${params.TOGGLE}"],
+                    [$class: 'StringParameterValue', name: 'ENV_FILE', value:  "${params.ENV_FILE}"]
+                ]
+            }
+        }
+    }
+}
