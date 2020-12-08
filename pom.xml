@@ -48,4 +48,14 @@
         </plugins>
     </build>
 
+    <modules>
+        <module>apollo</module>
+        <module>demo_test</module>
+        <module>eureka</module>
+        <module>eureka_client</module>
+        <module>eureka_server</module>
+        <module>hystrix_dashboard</module>
+        <module>my_starter</module>
+    </modules>
+
 </project>
