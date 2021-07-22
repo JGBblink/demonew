@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 /**
  * 列表工具类。
  */
-public final class ListUtils {
+public final class ListUtil {
 
     public static <T, R> List<R> extract(List<T> source, Function<T, R> extractor) {
         return Optional.ofNullable(source).orElseGet(Collections::emptyList).stream()
